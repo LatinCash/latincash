@@ -1,4 +1,4 @@
-This is the reference code for LatinCash cryptocurrency (forked from Worktips / Thans for developers)
+This is the reference code for LatinCash cryptocurrency
 
 * Official homepage:
 * Official repository:
