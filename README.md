@@ -1,9 +1,8 @@
 ## This is the reference code for LatinCash cryptocurrency
 
 * Official homepage:
-* Official repository:
+* Official repository: https://github.com/LatinCash/latincash/
 * Official Announcement thread:
-* Official Discord:
 * Official Twitter:
 * Official Telegram:
 * Official Whitepaper:
