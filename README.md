@@ -19,7 +19,7 @@ Fast transactions & privacy make this coin perfect for rewarding your workers, c
 - Ticker: LCH
 - Decimal points: 8
 - Block time: 120
-- Emission speed factor: 21
+- Emission speed factor: 20
 - P2P port: 20634
 - RPC port: 20635
 
