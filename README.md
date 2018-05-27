@@ -18,8 +18,8 @@ Fast transactions & privacy make this coin perfect for rewarding your workers, c
 - CryptoNote name: latincash
 - Ticker: LCH
 - Decimal points: 8
-- Block time: 30
-- Emission speed factor: 22
+- Block time: 120
+- Emission speed factor: 21
 - P2P port: 20634
 - RPC port: 20635
 
