@@ -15,11 +15,11 @@ Fast transactions & privacy make this coin perfect for rewarding your workers, c
 
 - Algorithm: CryptoNightLite V1
 - Max. supply: 50,000,000.00
-- CryptoNote name: latincash
+- CryptoNote name: LatinCash
 - Ticker: LCH
-- Decimal points: 8
+- Decimal points: 4
 - Block time: 120
-- Emission speed factor: 21
+- Emission speed factor: 20
 - P2P port: 20634
 - RPC port: 20635
 
