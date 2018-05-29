@@ -136,7 +136,8 @@ set PATH="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\
 - Run Cmake:
 
 ``
-cmake -G "Visual Studio 14 Win64" .. -DBOOST_ROOT=C:/ProgramFiles/boost_1_59_0  // Change "ProgramFiles" to boost folder location
+cmake -G "Visual Studio 14 Win64" .. -DBOOST_ROOT=C:/ProgramFiles/boost_1_59_0  
+
 ``
 
 - Build:
