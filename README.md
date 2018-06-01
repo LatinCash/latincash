@@ -2,8 +2,8 @@
 
 * Official homepage: https://latincash.github.io
 * Official repository: https://github.com/LatinCash/
-* Official Announcement thread:
-* Official Twitter:
+* Official Announcement thread: https://bitcointalk.org/index.php?topic=4389341.0
+* Official Twitter: https://twitter.com/LatinCashCoin
 * Official Telegram:
 * Official Whitepaper:
 * Official Block explorer: http://latincashexplorer.ddns.net
