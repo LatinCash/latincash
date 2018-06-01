@@ -1,12 +1,13 @@
 ## This is the reference code for LatinCash cryptocurrency
 
-* Official homepage: https://latincash.github.io
+* Official homepage: http://www.latincashcoin.com
 * Official repository: https://github.com/LatinCash/
 * Official Announcement thread: https://bitcointalk.org/index.php?topic=4389341.0
 * Official Twitter: https://twitter.com/LatinCashCoin
 * Official Telegram:
 * Official Whitepaper:
-* Official Block explorer: http://latincashexplorer.ddns.net
+* Official Mining Pool: http://pool.latincashcoin.com
+* Official Block explorer: http://explorer.latincashcoin.com
 
 ## LatinCash Cryptocurrency
 
