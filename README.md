@@ -4,7 +4,7 @@
 * Official repository: https://github.com/LatinCash/
 * Official Announcement thread: https://bitcointalk.org/index.php?topic=4389341.0
 * Official Twitter: https://twitter.com/LatinCashCoin
-* Official Telegram:
+* Official Discord: https://discordapp.com/invite/keez2rW
 * Official Whitepaper:
 * Official Mining Pool: http://pool.latincashcoin.com
 * Official Block explorer: http://explorer.latincashcoin.com
