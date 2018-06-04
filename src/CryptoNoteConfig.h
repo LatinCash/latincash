@@ -138,7 +138,7 @@ const size_t   P2P_DEFAULT_HANDSHAKE_INVOKE_TIMEOUT          = 5000;           /
 const char     P2P_STAT_TRUSTED_PUB_KEY[]                    = "";
 
 const char* const SEED_NODES[] = { 
-		"45.63.16.80:20634",		// vultr
-		"35.237.154.100:20634"		// google cloud
+		"node1.latincashcoin.com:20634",	// vultr
+		"node2.latincashcoin.com:20634"		// google cloud
 	};
 } // CryptoNote
