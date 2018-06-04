@@ -6,6 +6,7 @@
 * Official Twitter: https://twitter.com/LatinCashCoin
 * Official Discord: https://discordapp.com/invite/keez2rW
 * Official Whitepaper:
+* Official paper wallet generator: http://wallet.latincashcoin.com
 * Official Mining Pool: http://pool.latincashcoin.com
 * Official Block explorer: http://explorer.latincashcoin.com
 
