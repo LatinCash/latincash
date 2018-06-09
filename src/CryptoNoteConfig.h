@@ -50,12 +50,23 @@ const size_t   CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_CURRENT = CRYPTONOTE_BL
 const size_t   CRYPTONOTE_COINBASE_BLOB_RESERVED_SIZE        = 600;
 const size_t   CRYPTONOTE_DISPLAY_DECIMAL_POINT              = 4;
 const uint64_t MINIMUM_FEE                                   = UINT64_C(10);	// 0.001 LCH
-const uint16_t DEFAULT_MIXIN                                 = 5;
+
 const uint16_t MINIMUM_MIXIN_NO_DUST                         = 3;
+	
 const uint16_t MINIMUM_MIXIN_V1                              = 0;
 const uint16_t MAXIMUM_MIXIN_V1                              = 100;
-const uint32_t MIXIN_LIMITS_V1_HEIGHT                        = 100000;
+const uint64_t MINIMUM_MIXIN_V2                              = 3;
+const uint64_t MAXIMUM_MIXIN_V2 			     = 100;
+	
+const uint64_t DEFAULT_MIXIN 				     = MINIMUM_MIXIN_V2 + 2;
+
+const uint32_t MIXIN_LIMITS_V1_HEIGHT                        = 440000;
+const uint32_t MIXIN_LIMITS_V2_HEIGHT 			     = 600000;
+
 const uint64_t DEFAULT_DUST_THRESHOLD                        = UINT64_C(0);
+const uint64_t DEFAULT_DUST_THRESHOLD_V2                     = UINT64_C(0);
+	
+const uint32_t DUST_THRESHOLD_V2_HEIGHT 		     = MIXIN_LIMITS_V2_HEIGHT;
 
 const uint64_t DIFFICULTY_TARGET                             = 120;	// seconds
 const uint64_t EXPECTED_NUMBER_OF_BLOCKS_PER_DAY             = 24 * 60 * 60 / DIFFICULTY_TARGET;
