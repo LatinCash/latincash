@@ -32,13 +32,9 @@ Fast transactions & privacy make this coin perfect for rewarding your workers, c
 
 **1. Install dependencies**
 
-- run an update
-
 ``
 sudo apt-get update
 ``
-
-- get all dependencies
 
 ``
 sudo apt-get install -y build-essential python-dev gcc g++ git cmake librocksdb-dev libboost-all-dev
@@ -80,8 +76,6 @@ cd
 cd latincash
 ``
 
-- prepare the build
-
 ``
 mkdir build && cd $_
 ``
@@ -90,13 +84,9 @@ mkdir build && cd $_
 cmake ..
 ``
 
-- Export flags
-
 ``
 export CXXFLAGS="-std=gnu++11"
 ``
-
-- Make/Build
 
 ``
 make
