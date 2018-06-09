@@ -422,7 +422,7 @@ void serialize(TransactionExtraMergeMiningTag& tag, ISerializer& serializer) {
     StringOutputStream os(field);
     BinaryOutputStreamSerializer output(os);
     doSerialize(tag, output);
-    serializer(field, "");
+    serializer(field, "mm_tag");
   } else {
     std::string field;
     serializer(field, "");
@@ -472,5 +472,4 @@ void serialize(RawBlock& rawBlock, ISerializer& serializer) {
     }
   }
 }
-
 } //namespace CryptoNote
