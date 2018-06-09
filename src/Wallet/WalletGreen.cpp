@@ -1336,7 +1336,7 @@ void WalletGreen::prepareTransaction(std::vector<WalletOuts>&& wallets,
   preparedTransaction.neededMoney = countNeededMoney(preparedTransaction.destinations, fee);
 
   std::vector<OutputToTransfer> selectedTransfers;
-  uint64_t foundMoney = selectTransfers(preparedTransaction.neededMoney, mixIn == 0, m_currency.defaultDustThreshold(), std::move(wallets), selectedTransfers);
+  uint64_t foundMoney = selectTransfers(preparedTransaction.neededMoney, mixIn == 0, m_currency.defaultDustThreshold(m_node.getLastKnownBlockHeight()), std::move(wallets), selectedTransfers);
 
   if (foundMoney < preparedTransaction.neededMoney) {
     m_logger(ERROR, BRIGHT_RED) << "Failed to create transaction: not enough money. Needed " << m_currency.formatAmount(preparedTransaction.neededMoney) <<
@@ -1354,10 +1354,10 @@ void WalletGreen::prepareTransaction(std::vector<WalletOuts>&& wallets,
   std::vector<InputInfo> keysInfo;
   prepareInputs(selectedTransfers, mixinResult, mixIn, keysInfo);
 
-  uint64_t donationAmount = pushDonationTransferIfPossible(donation, foundMoney - preparedTransaction.neededMoney, m_currency.defaultDustThreshold(), preparedTransaction.destinations);
+  uint64_t donationAmount = pushDonationTransferIfPossible(donation, foundMoney - preparedTransaction.neededMoney, m_currency.defaultDustThreshold(m_node.getLastKnownBlockHeight()), preparedTransaction.destinations);
   preparedTransaction.changeAmount = foundMoney - preparedTransaction.neededMoney - donationAmount;
 
-  std::vector<ReceiverAmounts> decomposedOutputs = splitDestinations(preparedTransaction.destinations, m_currency.defaultDustThreshold(), m_currency);
+  std::vector<ReceiverAmounts> decomposedOutputs = splitDestinations(preparedTransaction.destinations, m_currency.defaultDustThreshold(m_node.getLastKnownBlockHeight()), m_currency);
   if (preparedTransaction.changeAmount != 0) {
     WalletTransfer changeTransfer;
     changeTransfer.type = WalletTransferType::CHANGE;
@@ -1365,7 +1365,7 @@ void WalletGreen::prepareTransaction(std::vector<WalletOuts>&& wallets,
     changeTransfer.amount = static_cast<int64_t>(preparedTransaction.changeAmount);
     preparedTransaction.destinations.emplace_back(std::move(changeTransfer));
 
-    auto splittedChange = splitAmount(preparedTransaction.changeAmount, changeDestination, m_currency.defaultDustThreshold());
+    auto splittedChange = splitAmount(preparedTransaction.changeAmount, changeDestination, m_currency.defaultDustThreshold(m_node.getLastKnownBlockHeight()));
     decomposedOutputs.emplace_back(std::move(splittedChange));
   }
 
@@ -3015,10 +3015,12 @@ size_t WalletGreen::createFusionTransaction(uint64_t threshold, uint16_t mixin,
 
   const size_t MAX_FUSION_OUTPUT_COUNT = 4;
 
-  if (threshold <= m_currency.defaultDustThreshold()) {
+  uint32_t height = m_node.getLastKnownBlockHeight();
+
+  if (threshold <= m_currency.defaultDustThreshold(height)) {
     m_logger(ERROR, BRIGHT_RED) << "Fusion transaction threshold is too small. Threshold " << m_currency.formatAmount(threshold) <<
-      ", minimum threshold " << m_currency.formatAmount(m_currency.defaultDustThreshold() + 1);
-    throw std::runtime_error("Threshold must be greater than " + m_currency.formatAmount(m_currency.defaultDustThreshold()));
+      ", minimum threshold " << m_currency.formatAmount(m_currency.defaultDustThreshold(height) + 1);
+    throw std::runtime_error("Threshold must be greater than " + m_currency.formatAmount(m_currency.defaultDustThreshold(height)));
   }
 
   if (m_walletsContainer.get<RandomAccessIndex>().size() == 0) {
@@ -3157,7 +3159,7 @@ bool WalletGreen::isFusionTransaction(const WalletTransaction& walletTx) const {
   if (outputsSum != inputsSum || outputsSum != txInfo.totalAmountOut || inputsSum != txInfo.totalAmountIn) {
     return false;
   } else {
-    return m_currency.isFusionTransaction(inputsAmounts, outputsAmounts, 0); //size = 0 here because can't get real size of tx in wallet.
+    return m_currency.isFusionTransaction(inputsAmounts, outputsAmounts, 0, m_node.getLastKnownBlockHeight()); //size = 0 here because can't get real size of tx in wallet.
   }
 }
 
@@ -3267,6 +3269,11 @@ std::vector<TransactionsInBlockInfo> WalletGreen::getTransactionsInBlocks(uint32
   if (count == 0) {
     m_logger(ERROR, BRIGHT_RED) << "Bad argument: block count must be greater than zero";
     throw std::system_error(make_error_code(error::WRONG_PARAMETERS), "blocks count must be greater than zero");
+  }
+  
+  if (blockIndex == 0) {
+    m_logger(ERROR, BRIGHT_RED) << "Bad argument: blockIndex must be greater than zero";
+    throw std::system_error(make_error_code(error::WRONG_PARAMETERS), "blockIndex must be greater than zero");
   }
 
   std::vector<TransactionsInBlockInfo> result;
@@ -3480,18 +3487,24 @@ void WalletGreen::deleteFromUncommitedTransactions(const std::vector<size_t>& de
    The constants this calculation arise from can be seen below, or in
    src/CryptoNoteCore/Currency.cpp::maxBlockCumulativeSize(). Call this value
    x.
+
    Next, calculate the median size of the last 100 blocks. Take the max of
    this value, and 100,000. Multiply this value by 1.25. Call this value y.
+
    Finally, return the minimum of x and y.
+
    Or, in short: min(140k (slowly rising), 1.25 * max(100k, median(last 100 blocks size)))
    Block size will always be 125k or greater (Assuming non testnet)
+
    To get the max transaction size, remove 600 from this value, for the
    reserved miner transaction.
+
    We are going to ignore the median(last 100 blocks size), as it is possible
    for a transaction to be valid for inclusion in a block when it is submitted,
    but not when it actually comes to be mined, for example if the median
    block size suddenly decreases. This gives a bit of a lower cap of max
    tx sizes, but prevents anything getting stuck in the pool.
+
 */
 size_t WalletGreen::getMaxTxSize()
 {
