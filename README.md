@@ -100,7 +100,7 @@ _Your executables will be located in `build/src` folder._
 **1. Environment**
 
 - Visual Studio 2017 Community Edition with desktop development with C++ and the VC++ v140 toolchain features selected
-- Boost 1.59.0, with the installer for MSVC 14
+- Boost 1.59.0, with the installer for MSVC 14 (tested with Boost 1.65.1)
 
 **2. Build**
 
