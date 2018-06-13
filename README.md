@@ -15,7 +15,7 @@
 LatinCash [LCH] is an ASIC resistant CryptoNightLite V1 algorithm based cryptocurrency. 
 Fast transactions & privacy make this coin perfect for rewarding your workers, co-workers and colleagues for a job well done.
 
-- Algorithm: CryptoNightLite V1
+- Algorithm: CryptoNightLight V1 (lite v7)
 - Max. supply: 50,000,000.00
 - CryptoNote name: LatinCash
 - Ticker: LCH
@@ -100,7 +100,7 @@ _Your executables will be located in `build/src` folder._
 **1. Environment**
 
 - Visual Studio 2017 Community Edition with desktop development with C++ and the VC++ v140 toolchain features selected
-- Boost 1.59.0, with the installer for MSVC 14 (tested with Boost 1.65.1)
+- Boost 1.59.0, with the installer for MSVC 14
 
 **2. Build**
 
@@ -141,4 +141,4 @@ _Your binaries  will be located in `..\build\src\Release` folder._
 
 
 ### Credits
-Cryptonote Developers, Bytecoin Developers, Monero Developers, Forknote Project, TurtleCoin Developers, Worktips Developers
+Cryptonote Developers, Bytecoin Developers, Monero Developers, Forknote Project, TurtleCoin Developers
