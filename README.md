@@ -16,7 +16,7 @@ LatinCash [LCH] is an ASIC resistant CryptoNightLite V1 algorithm based cryptocu
 Fast transactions & privacy make this coin perfect for rewarding your workers, co-workers and colleagues for a job well done.
 
 - Algorithm: CryptoNightLight V1 (lite v7)
-- Max. supply: 50,000,000.00
+- Max. supply: 50,000,000
 - CryptoNote name: LatinCash
 - Ticker: LCH
 - Decimal points: 4
