@@ -1,30 +1,6 @@
-## This is the reference code for LatinCash cryptocurrency
+LatinCash Crypto
 
-* Official homepage: https://www.latincashcoin.com
-* Official repository: https://github.com/LatinCash/
-* Official Announcement thread: https://bitcointalk.org/index.php?topic=4389341.0
-* Official Twitter: https://twitter.com/LatinCashCoin
-* Official Discord: https://discordapp.com/invite/keez2rW
-* Official Whitepaper:
-* Official paper wallet generator: https://wallet.latincashcoin.com
-* Official Mining Pool: http://pool.latincashcoin.com
-* Official Block explorer: http://explorer.latincashcoin.com
-
-## LatinCash Cryptocurrency
-
-LatinCash [LCH] is an ASIC resistant CryptoNightLite V1 algorithm based cryptocurrency. 
-Fast transactions & privacy make this coin perfect for rewarding your workers, co-workers and colleagues for a job well done.
-
-- Algorithm: CryptoNightLight V1 (lite v7)
-- Max. supply: 50,000,000
-- CryptoNote name: LatinCash
-- Ticker: LCH
-- Decimal points: 4
-- Block time: 120
-- Emission speed factor: 20
-- P2P port: 20634
-- RPC port: 20635
-
+Project closed
 
 ## How to compile
 
